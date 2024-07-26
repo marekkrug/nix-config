@@ -5,7 +5,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
-
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -94,38 +93,19 @@
     ];
   };
 
-/*
-  # Home Manager:
-  home-manager = {
-    useUserPackages = true;
-    useGlobalPkgs = true;
-
-    users = {
-      config,
-      pkgs,
-      ...
-    }: {
-      home.packages = with pkgs; [
-        # Apps
-      ]
-
-      programs = {
-        home-manager.enable = true;
-      }
-    }
-  }
-*/
-
   programs = {
 	firefox.enable = true;
 	steam.enable = true;
 	direnv.enable = true;
 	};
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+  
+  
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
@@ -154,17 +134,17 @@
     vscode
     git
     sqlite
-  	#Terminal:
-  	tldr
-  	btop
-  	htop
-  	# Geld:
-  	monero-gui
+    #Terminal:
+    tldr
+    btop
+    htop
+    # Geld:
+    monero-gui
     # Sonstiges:
     neofetch
     ollama
   ];
-
+  
   # Auto-delete old generations:
 
   nix.gc = {
