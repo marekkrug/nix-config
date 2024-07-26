@@ -24,8 +24,8 @@
     userEmail = "git-mail@marekkrug.de";
     userName = "murmeldin";
     extraConfig = {
-      init.defaultBranch = "main";
-    };
+    init.defaultBranch = "main";
+  };
   };
 
 }
