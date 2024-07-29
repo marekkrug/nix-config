@@ -143,6 +143,7 @@
     # Sonstiges:
     neofetch
     ollama
+    upscayl
   ];
   
   # Auto-delete old generations:
