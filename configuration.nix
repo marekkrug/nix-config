@@ -114,6 +114,9 @@
     spotify
     steam
     ticktick
+    vlc
+    # Office:
+    libreoffice
     #texstudio
     #texliveFull
     pandoc
@@ -125,25 +128,29 @@
     telegram-desktop
     element-desktop
     yt-dlp
-    # RUST:
+    # Programming:
     jetbrains.rust-rover
     rustup
     gccgo14
     openssl
     pkg-config
-    vscode
+    vscodium
     git
     sqlite
+    go
     #Terminal:
     tldr
     btop
     htop
     # Geld:
     monero-gui
-    # Sonstiges:
+    # NixOS:
     neofetch
-    ollama
+    #just
+    # AI Stuff:
+    #ollama
     upscayl
+    chromium
   ];
   
   # Auto-delete old generations:
