@@ -47,6 +47,7 @@
         mkhl.direnv
         vadimcn.vscode-lldb
         ms-dotnettools.csharp
+        jnoortheen.nix-ide
       ];
       userSettings = {
         "git.autofetch" = true;

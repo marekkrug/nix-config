@@ -151,7 +151,13 @@
     #ollama
     upscayl
     chromium
+    # Virtualisierung:
+    virtualbox
+    virtualboxExtPack
+    virtualboxGuestAdditions
   ];
+  
+  virtualisation.virtualbox.host.enable = true;
   
   # Auto-delete old generations:
 
