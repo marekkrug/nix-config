@@ -123,6 +123,7 @@
     gparted
     mullvad-vpn
     mullvad
+    gimp
     # Kommunikation:
     signal-desktop
     telegram-desktop
@@ -151,13 +152,17 @@
     #ollama
     upscayl
     chromium
-    # Virtualisierung:
-    virtualbox
-    virtualboxExtPack
-    virtualboxGuestAdditions
+    #waydroid
   ];
-  
+
+  # Virtual Box:
+
   virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "murmeldin" ];
+
+  # Android vm:
+
+  virtualisation.waydroid.enable = true;
   
   # Auto-delete old generations:
 

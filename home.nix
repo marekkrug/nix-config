@@ -48,6 +48,7 @@
         vadimcn.vscode-lldb
         ms-dotnettools.csharp
         jnoortheen.nix-ide
+        golang.go
       ];
       userSettings = {
         "git.autofetch" = true;
