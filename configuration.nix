@@ -139,6 +139,7 @@
     git
     sqlite
     go
+    gopls
     #Terminal:
     tldr
     btop

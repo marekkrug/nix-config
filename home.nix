@@ -51,30 +51,32 @@
         golang.go
       ];
       userSettings = {
+        "diffEditor.diffAlgorithm"= "advanced";
+        "editor.fontFamily"= "'Fira Code', 'Droid Sans Mono', 'monospace', monospace";
+        "editor.fontLigatures"= true;
+        "editor.formatOnSave"= true;
+        "editor.formatOnSaveMode"= "modificationsIfAvailable";
+        "editor.minimap.autohide"= true;
+        "explorer.excludeGitIgnore"= true;
+        "extensions.autoCheckUpdates"= false;
+        "extensions.autoUpdate"= false;
         "git.autofetch" = true;
-        "update.mode" = "none";
-        "editor.fontFamily" = "'Fira Code', 'Droid Sans Mono', 'monospace', monospace";
-        "editor.fontLigatures" = true;
-        "editor.formatOnSave" = true;
-        "editor.formatOnSaveMode" = "modificationsIfAvailable";
-        "editor.minimap.autohide" = true;
-        "diffEditor.diffAlgorithm" = "advanced";
-        "explorer.excludeGitIgnore" = true;
-        "markdown.extension.tableFormatter.normalizeIndentation" = true;
-        "markdown.extension.toc.orderedList" = false;
-        "telemetry.telemetryLevel" = "off";
-        "redhat.telemetry.enabled" = false;
-        "workbench.startupEditor" = "readme";
-        "workbench.enableExperiments" = false;
-        "workbench.iconTheme" = "material-icon-theme";
-        "rust-analyzer.checkOnSave.command" = "clippy";
-        "extensions.autoUpdate" = false;
-        "extensions.autoCheckUpdates" = false;
+        "git.enableSmartCommit" = true;
+        "markdown.extension.tableFormatter.normalizeIndentation"= true;
+        "markdown.extension.toc.orderedList"= false;
+        "redhat.telemetry.enabled"= false;
+        "rust-analyzer.checkOnSave.command"= "clippy";
+        "telemetry.telemetryLevel"= "off";
+        "update.mode"= "none";
+        "workbench.enableExperiments"= false;
+        "workbench.iconTheme"= "material-icon-theme";
+        "workbench.startupEditor"= "readme";
         "\[makefile\]" = {
-          "editor.insertSpaces" = false;
           "editor.detectIndentation" = false;
+          "editor.insertSpaces" = false;
         };
       };
+          
     };
 
     fzf.enable = true;
