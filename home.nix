@@ -54,8 +54,6 @@
         "diffEditor.diffAlgorithm"= "advanced";
         "editor.fontFamily"= "'Fira Code', 'Droid Sans Mono', 'monospace', monospace";
         "editor.fontLigatures"= true;
-        "editor.formatOnSave"= true;
-        "editor.formatOnSaveMode"= "modificationsIfAvailable";
         "editor.minimap.autohide"= true;
         "explorer.excludeGitIgnore"= true;
         "extensions.autoCheckUpdates"= false;
@@ -68,6 +66,7 @@
         "rust-analyzer.checkOnSave.command"= "clippy";
         "telemetry.telemetryLevel"= "off";
         "update.mode"= "none";
+        "files.autoSave" = "afterDelay";
         "workbench.enableExperiments"= false;
         "workbench.iconTheme"= "material-icon-theme";
         "workbench.startupEditor"= "readme";
@@ -84,7 +83,7 @@
     zsh = {
       initExtra = ''
         eval "$(direnv hook zsh)";
-        export PATH=$PATH:/home/vinzenz/.cargo/bin
+        export PATH=$PATH:/home/murmeldin/.cargo/bin
       '';
 
     shellAliases = {
