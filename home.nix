@@ -49,6 +49,7 @@
         ms-dotnettools.csharp
         jnoortheen.nix-ide
         golang.go
+        ms-python.python
       ];
       userSettings = {
         "diffEditor.diffAlgorithm"= "advanced";
@@ -81,24 +82,36 @@
     fzf.enable = true;
 
     zsh = {
-      initExtra = ''
-        eval "$(direnv hook zsh)";
-        export PATH=$PATH:/home/murmeldin/.cargo/bin
-      '';
+      enable = true;
+      enableCompletion = true;
+      autosuggestion.enable = true;
+      syntaxHighlighting.enable = true;
 
-    shellAliases = {
-      my-apply = "sudo nixos-rebuild boot";
-      my-switch = "sudo nixos-rebuild switch --flake /home/murmeldin/.dotfiles/";
-      my-update = "sudo nixos-rebuild boot --upgrade";
-      my-pull = "git -C ~/Repos/nixos-configuration pull --rebase";
-      my-fmt = "alejandra .";
-      my-test = "sudo nixos-rebuild test";
-      my-direnvallow = "echo \"use nix\" > .envrc && direnv allow";
-      my-ip4 = "ip addr show | grep 192";
+      shellAliases = {
+        # my own things:
+        my-update = "sudo nixos-rebuild switch --flake /home/murmeldin/.dotfiles/";
+        my-home-update = "home-manager switch --flake /home/murmeldin/.dotfiles/";
+        my-upgrade = "sudo nixos-rebuild switch --upgrade --flake /home/murmeldin/.dotfiles/";
+        my-pull = "git -C ~/Repos/nixos-configuration pull --rebase";
+        my-test = "sudo nixos-rebuild test";
+        my-direnvallow = "echo \"use nix\" > .envrc && direnv allow";
+        my-ip4 = "ip addr show | grep 192";
+        # defaults:
+        ll = "ls -l";
+      };
+
+      oh-my-zsh = {
+        enable = true;
+        plugins = [ "git" "thefuck" ];
+        theme = "agnoster";
+      };
+
+      history = {
+        size = 10000;
+        path = "${config.xdg.dataHome}/zsh/history";
+      };
+
+    };
     };
 
-    };
-
- 
-  };
 }

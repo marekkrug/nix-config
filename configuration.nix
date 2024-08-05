@@ -93,10 +93,14 @@
     ];
   };
 
+  # Enable zshell as default:
+  users.defaultUserShell = pkgs.zsh;
+
   programs = {
 	firefox.enable = true;
 	steam.enable = true;
 	direnv.enable = true;
+  zsh.enable = true;
 	};
   # Allow unfree packages
   nixpkgs.config = {
@@ -140,10 +144,12 @@
     sqlite
     go
     gopls
+    python3
     #Terminal:
     tldr
     btop
     htop
+    thefuck
     # Geld:
     monero-gui
     # NixOS:
