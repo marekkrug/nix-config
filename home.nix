@@ -90,9 +90,10 @@
 
       shellAliases = {
         # my own things:
-        my-update = "sudo nixos-rebuild switch --flake /home/murmeldin/.dotfiles/";
-        my-home-update = "home-manager switch --flake /home/murmeldin/.dotfiles/";
-        my-upgrade = "sudo nixos-rebuild switch --upgrade --flake /home/murmeldin/.dotfiles/";
+        my-update = "sudo nixos-rebuild switch --flake .";
+        my-home-update = "home-manager switch --flake .";
+        my-upgrade = "sudo nixos-rebuild switch --upgrade --flake .";
+        my-flake-update = "sudo nix flake update";
         my-pull = "git -C ~/Repos/nixos-configuration pull --rebase";
         my-test = "sudo nixos-rebuild test";
         my-direnvallow = "echo \"use nix\" > .envrc && direnv allow";

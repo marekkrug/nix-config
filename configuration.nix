@@ -174,39 +174,40 @@
   # local MediaWiki for Development of PlenumBot:
 
   services.mediawiki = {
-  enable = true;
-  # Prior to NixOS 24.05, there is a admin name bug that prevents using spaces in the mediawiki name https://github.com/NixOS/nixpkgs/issues/298902
-  name = "Test_MediaWiki";
-  httpd.virtualHost = {
-    hostName = "127.0.0.1";
-    adminAddr = "mail@marekkrug.de";
-  };
-  # Administrator account username is admin.
-  # Set initial password to "cardbotnine" for the account admin.
-  passwordFile = pkgs.writeText "password" "cardbotnine";
-  extraConfig = ''
-    # Disable anonymous editing
-    $wgGroupPermissions['*']['edit'] = false;
-  '';
-
-  extensions = {
-    # some extensions are included and can enabled by passing null
-    VisualEditor = null;
-
-    # https://www.mediawiki.org/wiki/Extension:TemplateStyles
-    TemplateStyles = pkgs.fetchzip {
-      url = "https://extdist.wmflabs.org/dist/extensions/TemplateStyles-REL1_40-c639c7a.tar.gz";
-      hash = "sha256-YBL0Cs4hDSNnoutNJSJBdLsv9zFWVkzo7m5osph8QiY=";
+    enable = true;
+    # Prior to NixOS 24.05, there is a admin name bug that prevents using spaces in the mediawiki name https://github.com/NixOS/nixpkgs/issues/298902
+    name = "Test_MediaWiki";
+    httpd.virtualHost = {
+      hostName = "127.0.0.1";
+      adminAddr = "mail@marekkrug.de";
     };
-  };
+    # Administrator account username is admin.
+    # Set initial password to "cardbotnine" for the account admin.
+    passwordFile = pkgs.writeText "password" "cardbotnine";
+    extraConfig = ''
+      # Disable anonymous editing
+      $wgGroupPermissions['*']['edit'] = false;
+    '';
+
+    extensions = {
+      # some extensions are included and can enabled by passing null
+      VisualEditor = null;
+
+      # https://www.mediawiki.org/wiki/Extension:TemplateStyles
+      TemplateStyles = pkgs.fetchzip {
+        url = "https://extdist.wmflabs.org/dist/extensions/TemplateStyles-REL1_40-c639c7a.tar.gz";
+        hash = "sha256-YBL0Cs4hDSNnoutNJSJBdLsv9zFWVkzo7m5osph8QiY=";
+      };
+    };
+
+    httpd.virtualHost.listen = [
+      {
+        ip = "127.0.0.1";
+        port = 8090;
+        ssl = false;
+      }
+    ];
 };
-services.mediawiki.httpd.virtualHost.listen = [
-  {
-    ip = "127.0.0.1";
-    port = 8090;
-    ssl = false;
-  }
-];
   
   # Auto-delete old generations:
 
