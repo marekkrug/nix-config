@@ -75,6 +75,7 @@
           "editor.detectIndentation" = false;
           "editor.insertSpaces" = false;
         };
+        "python.defaultInterpreterPath" = "/run/current-system/sw/bin/python";
       };
           
     };
