@@ -172,13 +172,13 @@
   virtualisation.waydroid.enable = true;
 
   # local MediaWiki for Development of PlenumBot:
-
+  
   services.mediawiki = {
     enable = true;
     # Prior to NixOS 24.05, there is a admin name bug that prevents using spaces in the mediawiki name https://github.com/NixOS/nixpkgs/issues/298902
     name = "Test_MediaWiki";
     httpd.virtualHost = {
-      hostName = "127.0.0.1";
+      hostName = "localhost";
       adminAddr = "mail@marekkrug.de";
     };
     # Administrator account username is admin.
@@ -195,19 +195,21 @@
 
       # https://www.mediawiki.org/wiki/Extension:TemplateStyles
       TemplateStyles = pkgs.fetchzip {
-        url = "https://extdist.wmflabs.org/dist/extensions/TemplateStyles-REL1_40-c639c7a.tar.gz";
-        hash = "sha256-YBL0Cs4hDSNnoutNJSJBdLsv9zFWVkzo7m5osph8QiY=";
+        url = "https://extdist.wmflabs.org/dist/extensions/TemplateStyles-REL1_42-a28054b.tar.gz";
+        hash = "sha256-a/kWH9+P7ZujXFUEJ71upesVDGyg6MYcLuaua95DZj8==";
       };
     };
+};
 
-    httpd.virtualHost.listen = [
+  services.mediawiki.httpd.virtualHost.listen = [
       {
-        ip = "127.0.0.1";
-        port = 8090;
+        ip = "localhost";
+        port = 80;
         ssl = false;
       }
     ];
-};
+
+  
   
   # Auto-delete old generations:
 
