@@ -119,6 +119,7 @@
     steam
     ticktick
     vlc
+    blender
     # Office:
     libreoffice
     #texstudio
