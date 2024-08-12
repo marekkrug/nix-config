@@ -9,7 +9,8 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./user/mediawiki.nix
+      # Import other nix files from the system folder:
+      ./system/mediawiki.nix
     ];
 
   # Bootloader.
@@ -98,10 +99,10 @@
   users.defaultUserShell = pkgs.zsh;
 
   programs = {
-	firefox.enable = true;
-	steam.enable = true;
-	direnv.enable = true;
-  zsh.enable = true;
+    firefox.enable = true;
+    steam.enable = true;
+    direnv.enable = true;
+    zsh.enable = true;
 	};
   # Allow unfree packages
   nixpkgs.config = {
@@ -173,8 +174,6 @@
 
   virtualisation.waydroid.enable = true;
 
- 
-  
   # Auto-delete old generations:
 
   nix.gc = {

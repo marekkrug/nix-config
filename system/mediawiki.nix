@@ -1,4 +1,4 @@
-{config, pkgs, ...}:
+{ config, pkgs, ... }:
   
   # local MediaWiki for Development of PlenumBot:
 
