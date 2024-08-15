@@ -119,7 +119,7 @@
     bitwarden-desktop
     thunderbird
     spotify
-    steam
+    #(unstablePkgs.steam)
     ticktick
     vlc
     blender
@@ -146,9 +146,6 @@
     vscodium
     git
     sqlite
-    go
-    gopls
-    python3
     #Terminal:
     tldr
     btop
@@ -164,7 +161,6 @@
     upscayl
     chromium
     #waydroid
-    slack
   ];
 
   # Virtual Box:

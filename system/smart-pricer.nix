@@ -47,5 +47,17 @@
     #  { from = 8000; to = 8010; }
     #];
   };
+
+    environment.systemPackages = with pkgs; [
+      slack
+      gitkraken
+      go
+      gopls
+      python3
+      #python3.packages.pip
+      # aus ubuntu config
+      bison
+    ];
   
 }
+

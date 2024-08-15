@@ -28,9 +28,17 @@
     { device = "/dev/disk/by-uuid/72BA-EA5C";
       fsType = "exfat";
     };
+  
+  fileSystems."/mnt/swap-disk" = 
+    { device = "/dev/disk/by-uuid/50ad4f6d-a839-4398-94d3-ee5e0a0f7002";
+      fsType = "ext4";
+    };
 
 
-  swapDevices = [ ];
+  swapDevices = [ {
+    device = "/mnt/swap-disk/swapfile";
+    size = 12*1024;
+  } ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
