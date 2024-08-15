@@ -11,6 +11,7 @@
       ./hardware-configuration.nix
       # Import other nix files from the system folder:
       ./system/mediawiki.nix
+      ./system/smart-pricer.nix
     ];
 
   # Bootloader.
@@ -163,6 +164,7 @@
     upscayl
     chromium
     #waydroid
+    slack
   ];
 
   # Virtual Box:
