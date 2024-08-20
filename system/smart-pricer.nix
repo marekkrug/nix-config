@@ -9,6 +9,7 @@
     # Enable docker service
   # See https://nixos.wiki/wiki/Docker
   virtualisation.docker.enable = true;
+  users.users.murmeldin.extraGroups = [ "docker" ];
   virtualisation.docker.autoPrune.enable = true;
   virtualisation.docker.autoPrune.dates = "weekly";
   virtualisation.docker.autoPrune.flags = [ "--all" ];
@@ -41,7 +42,7 @@
 
     trustedInterfaces = [ "docker0" ];
     
-    #allowedTCPPorts = [ 80 443 ];
+    allowedTCPPorts = [ 80 443 ];
     #allowedUDPPortRanges = [
     #  { from = 4000; to = 4007; }
     #  { from = 8000; to = 8010; }
@@ -57,7 +58,18 @@
       #python3.packages.pip
       # aus ubuntu config
       bison
+      jetbrains.goland
+      jetbrains.pycharm-community
+      git
+      git-lfs
+      google-chrome
+      #selenium-manager
+
     ];
+
+  environment.variables = {
+    GOPRIVATE = "github.com/smartpricer/*";
+  };
   
 }
 
