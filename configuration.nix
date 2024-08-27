@@ -12,6 +12,7 @@
       # Import other nix files from the system folder:
       ./system/mediawiki.nix
       ./system/smart-pricer.nix
+      # <nixos/nixos/modules/virtualisation/virtualbox-image.nix> # If i should need an iso image
     ];
 
   # Bootloader.
@@ -163,7 +164,15 @@
     tlp
     mission-center
     stress
+    squashfsTools
   ];
+
+  
+  nixpkgs.config.permittedInsecurePackages = [
+    "jitsi-meet-1.0.8043"
+  ];
+  
+
 
   # Power management
   #services.tlp.enable = true;
@@ -172,6 +181,22 @@
 
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "murmeldin" ];
+
+  # NixOS Virtualization:
+
+  users.users.nixosvmtest.isSystemUser = true ;
+  users.users.nixosvmtest.initialPassword = "test";
+  users.users.nixosvmtest.group = "nixosvmtest";
+  users.groups.nixosvmtest = {};
+
+  virtualisation.vmVariant = {
+    # following configuration is added only when building VM with build-vm
+    virtualisation = {
+      memorySize =  2048; # Use 2048MiB memory.
+      cores = 3;         
+      # 
+    };
+  };
 
   # Android vm:
 
