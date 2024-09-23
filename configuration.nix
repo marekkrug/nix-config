@@ -127,7 +127,6 @@
     pandoc
     gparted
     mullvad-vpn
-    mullvad
     gimp
     # Kommunikation:
     signal-desktop
@@ -155,7 +154,7 @@
     neofetch
     #just
     # AI Stuff:
-    #ollama
+    ollama
     upscayl
     chromium
     #waydroid
@@ -165,6 +164,11 @@
     mission-center
     stress
     squashfsTools
+    prusa-slicer
+    powertop
+    inkscape
+    obsidian
+    texliveSmall
   ];
 
   
