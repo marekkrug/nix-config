@@ -13,6 +13,7 @@
       ./system/mediawiki.nix
       ./system/smart-pricer.nix
       # <nixos/nixos/modules/virtualisation/virtualbox-image.nix> # If i should need an iso image
+      ./system/borg-backup.nix
     ];
 
   # Bootloader.
@@ -134,7 +135,7 @@
     element-desktop
     yt-dlp
     # Programming:
-    jetbrains.rust-rover
+    #jetbrains.rust-rover
     rustup
     gccgo14
     openssl
@@ -169,6 +170,9 @@
     inkscape
     obsidian
     texliveSmall
+    sof-firmware
+    wirelesstools
+    borgbackup
   ];
 
   
@@ -179,7 +183,7 @@
 
 
   # Power management
-  #services.tlp.enable = true;
+  # services.tlp.enable = true;
 
   # Virtual Box:
 

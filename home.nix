@@ -151,7 +151,7 @@
         Port 22
 
       Host ubuntu-vm
-        Hostname krugs.duckdns.org
+        Hostname fz6galkcgq4jhexn.myfritz.net
         User ubuntu-vm
         Port 11255
 
