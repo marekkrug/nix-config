@@ -14,6 +14,7 @@
       ./system/smart-pricer.nix
       # <nixos/nixos/modules/virtualisation/virtualbox-image.nix> # If i should need an iso image
       ./system/borg-backup.nix
+      ./cron.nix
     ];
 
   # Bootloader.
@@ -171,8 +172,6 @@
     obsidian
     texliveSmall
     sof-firmware
-    wirelesstools
-    borgbackup
   ];
 
   

@@ -13,13 +13,14 @@
         my-update = "sudo nixos-rebuild switch --flake .";
         my-home-update = "home-manager switch --flake .";
         cd-dotfiles = "cd ~/.dotfiles/";
-        my-upgrade = "sudo nixos-rebuild switch --upgrade --flake .";
+        my-upgrade = "sudo bnixos-rebuild switch --upgrade --flake .";
         my-flake-update = "sudo nix flake update";
         my-pull = "git -C ~/Repos/nixos-configuration pull --rebase";
         my-test = "sudo nixos-rebuild test";
         my-direnvallow = "echo \"use nix\" > .envrc && direnv allow";
         my-ip4 = "ip addr show | grep 192";
         my-folder-size-analyzer = "du -shx ./* | sort -h";
+        my-borg-backup.local = "sudo /home/murmeldin/.dotfiles/borg_backup.sh";
         gs = "git status";
         # defaults:
         ll = "ls -l";

@@ -1,16 +1,18 @@
-#!/bin/sh
+#!/bin/bash
+
+echo "$(date): Skript wurde getriggert" >> /var/log/dispatcher.log
 
 if [[ $EUID -ne 0 ]]; then
    echo "This script must be run as root" 1>&2
    exit 1
 fi
 
-SSID=$(iwgetid -r)
+SSID=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -d':' -f2)
 HOME_SSID="FRITZ!Box 7490_DJME"
 
 if [ "$SSID" != "$HOME_SSID" ]; then
     echo "Nicht im Heimnetzwerk. Backup wird nicht gestartet."
-    #exit 0
+    exit 0
 fi
 
 
