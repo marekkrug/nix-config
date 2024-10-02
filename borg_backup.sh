@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 echo "$(date): Skript wurde getriggert" >> /var/log/dispatcher.log
 
@@ -7,11 +7,10 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
-SSID=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -d':' -f2)
-HOME_SSID="FRITZ!Box 7490_DJME"
-
-if [ "$SSID" != "$HOME_SSID" ]; then
-    echo "Nicht im Heimnetzwerk. Backup wird nicht gestartet."
+# Überprüfen, ob der Backup-Server erreichbar ist (egal ob per WLAN oder VPN)
+ping -c 1 ubuntu-vm &> /dev/null
+if [ $? -ne 0 ]; then
+    echo "Backup-Server nicht erreichbar. Backup wird nicht gestartet."
     exit 0
 fi
 
@@ -49,6 +48,7 @@ borg create                         \
     --exclude '/var/tmp/*'          \
     --exclude '/home/murmeldin/VirtualBox VMs/*' \
     --exclude '/home/murmeldin/go/*' \
+    --exclude '/home/murmeldin/SteamGames/*' \
                                     \
     ::'{hostname}-{now}'            \
     /etc                            \

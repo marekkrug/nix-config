@@ -20,7 +20,7 @@
         my-direnvallow = "echo \"use nix\" > .envrc && direnv allow";
         my-ip4 = "ip addr show | grep 192";
         my-folder-size-analyzer = "du -shx ./* | sort -h";
-        my-borg-backup.local = "sudo /home/murmeldin/.dotfiles/borg_backup.sh";
+        my-borg-backup = "sudo /home/murmeldin/.dotfiles/borg_backup.sh";
         gs = "git status";
         # defaults:
         ll = "ls -l";

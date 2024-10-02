@@ -4,7 +4,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, stablePkgs, ... }:
+{ config, pkgs, stablePkgs, inputs, ... }:
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -14,7 +14,7 @@
       ./system/smart-pricer.nix
       # <nixos/nixos/modules/virtualisation/virtualbox-image.nix> # If i should need an iso image
       ./system/borg-backup.nix
-      ./system/cron.nix
+      #./system/cron.nix
     ];
 
   # Bootloader.
@@ -105,10 +105,19 @@
     direnv.enable = true;
     zsh.enable = true;
 	};
-  # Allow unfree packages
-  nixpkgs.config = {
-    allowUnfree = true;
+ 
+  nixpkgs = { 
+    overlays = [
+      (final: prev: {
+        nvchad = inputs.nvchad4nix.packages."${pkgs.system}".nvchad;
+      })
+    ];
+    config = {
+      # Allow unfree packages
+      allowUnfree = true;
+    };
   };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   
@@ -128,7 +137,6 @@
     #texliveFull
     pandoc
     gparted
-    mullvad-vpn
     gimp
     # Kommunikation:
     signal-desktop
@@ -160,7 +168,6 @@
     upscayl
     chromium
     #waydroid
-    neovim
     #sof-firmware
     tlp
     mission-center
@@ -172,6 +179,10 @@
     obsidian
     texliveSmall
     sof-firmware
+    discord
+    languagetool
+    fasttext
+    nvchad
   ];
 
   
@@ -184,10 +195,11 @@
   # Power management
   # services.tlp.enable = true;
 
-  # Virtual Box:
-
-  virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = [ "murmeldin" ];
+  # Mullvad
+  services.mullvad-vpn.package = pkgs.mullvad-vpn;
+  services.mullvad-vpn = {
+    enable = true;
+  };
 
   # NixOS Virtualization:
 

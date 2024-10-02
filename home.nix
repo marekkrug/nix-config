@@ -4,6 +4,7 @@
   imports = [
     # Import nix files from the user folder:
     ./user/sh.nix
+    ./user/nvchad.nix
   ];
   
   # Home Manager needs a bit of information about you and the
@@ -19,7 +20,7 @@
   # the Home Manager release notes for a list of state version
   # changes in each release.  # You can update Home Manager without changing this value. See
 
-  home.stateVersion = "24.05";
+  home.stateVersion = "24.11";
   programs = {
      # Let Home Manager install and manage itself.
     home-manager.enable = true;
@@ -61,8 +62,8 @@
       ];
       userSettings = {
         "diffEditor.diffAlgorithm"= "advanced";
-        "editor.fontFamily"= "'Fira Code', 'Droid Sans Mono', 'monospace', monospace";
-        "editor.fontLigatures"= true;
+        "editor.fontFamily" = "'Monaspace Neon', monospace";
+        "editor.fontLigatures" = "'calt', 'liga', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'ss09'";
         "editor.minimap.autohide"= true;
         "explorer.excludeGitIgnore"= true;
         "extensions.autoCheckUpdates"= false;
@@ -80,12 +81,11 @@
         "workbench.iconTheme"= "material-icon-theme";
         "workbench.startupEditor"= "readme";
         "\[makefile\]" = {
-          "editor.detectIndentation" = false;
+          "editor.detectIndentation" = false; 
           "editor.insertSpaces" = false;
         };
         "python.defaultInterpreterPath" = "/run/current-system/sw/bin/python";
       };
-          
     };
 
     fzf.enable = true;
