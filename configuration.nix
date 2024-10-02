@@ -182,7 +182,8 @@
     discord
     languagetool
     fasttext
-    nvchad
+    nix-output-monitor
+    cabal-install
   ];
 
   

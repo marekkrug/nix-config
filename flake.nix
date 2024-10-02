@@ -39,6 +39,7 @@
       homeConfigurations = {
         murmeldin = hmLib.homeManagerConfiguration {
           pkgs = pkgs;
+          extraSpecialArgs = extraSpecialArgs;
           modules = [
             ./home.nix
           ];
