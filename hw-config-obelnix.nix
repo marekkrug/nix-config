@@ -8,50 +8,32 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "usbhid" "sd_mod" "rtsx_pci_sdmmc" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" "dm-raid" ];
+  boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/df307362-e08e-4c80-bfea-7ad1924aa57a";
+    { device = "/dev/disk/by-uuid/1b2264a4-ff98-4f1e-a85d-7210082b827e";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/8912-8EE5";
+    { device = "/dev/disk/by-uuid/7C1A-DF30";
       fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
+      options = [ "fmask=0077" "dmask=0077" ];
     };
 
-  fileSystems."/mnt/data+games" =
-    { device = "/dev/disk/by-uuid/72BA-EA5C";
-      fsType = "exfat";
-      options = [ # If you don't have this options attribute, it'll default to "defaults" 
-        # boot options for fstab. Search up fstab mount options you can use
-        "users" # Allows any user to mount and unmount
-        "nofail" # Prevent system from failing if this drive doesn't mount
-   ];
-    };
-  
-  fileSystems."/mnt/swap-disk" = 
-    { device = "/dev/disk/by-uuid/50ad4f6d-a839-4398-94d3-ee5e0a0f7002";
-      fsType = "ext4";
-    };
-
-
-  swapDevices = [ {
-    device = "/mnt/swap-disk/swapfile";
-    size = 12*1024;
-  } ];
+  swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp5s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp4s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
