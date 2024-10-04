@@ -30,8 +30,15 @@
         miracunix = nixpkgs.lib.nixosSystem {
           inherit specialArgs;           # <- this will make inputs available anywhere in the NixOS configuration
           modules = [
-            ./configuration.nix
-            ./hardware-configuration.nix
+            ./configuration-miracunix.nix
+            ./hw-config-miracunix.nix
+          ];
+        };
+        obelnix = nixpkgs.lib.nixosSystem {
+          inherit specialArgs;           # <- this will make inputs available anywhere in the NixOS configuration
+          modules = [
+            ./configuration-obelnix.nix
+            ./hw-config-obelnix.nix
           ];
         };
       };
