@@ -8,7 +8,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      ./hw-config-miracunix.nix
       # Import other nix files from the system folder:
       ./system/mediawiki.nix
       ./system/smart-pricer.nix

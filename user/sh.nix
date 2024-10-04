@@ -10,8 +10,8 @@
 
       shellAliases = {
         # my own things:
-        my-update = "sudo nixos-rebuild switch --flake .";
-        my-home-update = "home-manager switch --flake .";
+        my-update = "cd ~/.dotfiles/ && git pull && git push && sudo nixos-rebuild switch --flake .";
+        my-home-update = "cd ~/.dotfiles/ && git pull && git push && home-manager switch --flake .";
         cd-dotfiles = "cd ~/.dotfiles/";
         my-upgrade = "sudo bnixos-rebuild switch --upgrade --flake .";
         my-flake-update = "sudo nix flake update";
