@@ -1,27 +1,31 @@
 # Notiz: command: sudo nixos-rebuild switch
-
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, stablePkgs, inputs, ... }:
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hw-config-obelnix.nix
-      # Import other nix files from the system folder:
-      #./system/mediawiki.nix
-      #./system/smart-pricer.nix
-      # <nixos/nixos/modules/virtualisation/virtualbox-image.nix> # If i should need an iso image
-      ./system/borg-backup.nix
-      #./system/cron.nix
-    ];
+  config,
+  pkgs,
+  stablePkgs,
+  inputs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hw-config-obelnix.nix
+    # Import other nix files from the system folder:
+    #./system/mediawiki.nix
+    ./system/smart-pricer.nix
+    # <nixos/nixos/modules/virtualisation/virtualbox-image.nix> # If i should need an iso image
+    ./system/borg-backup.nix
+    ./system/enable-numlock.nix
+    #./system/cron.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   networking.hostName = "obelnix"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -90,9 +94,9 @@
   users.users.murmeldin = {
     isNormalUser = true;
     description = "murmeldin";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -104,9 +108,9 @@
     steam.enable = true;
     direnv.enable = true;
     zsh.enable = true;
-	};
- 
-  nixpkgs = { 
+  };
+
+  nixpkgs = {
     overlays = [
       (final: prev: {
         nvchad = inputs.nvchad4nix.packages."${pkgs.system}".nvchad;
@@ -120,7 +124,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  
+
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
@@ -188,14 +192,12 @@
     parted
     cryptsetup
     tree
+    home-manager
   ];
 
-  
   nixpkgs.config.permittedInsecurePackages = [
     "jitsi-meet-1.0.8043"
   ];
-  
-
 
   # Power management
   # services.tlp.enable = true;
@@ -208,7 +210,7 @@
 
   # NixOS Virtualization:
 
-  users.users.nixosvmtest.isSystemUser = true ;
+  users.users.nixosvmtest.isSystemUser = true;
   users.users.nixosvmtest.initialPassword = "test";
   users.users.nixosvmtest.group = "nixosvmtest";
   users.groups.nixosvmtest = {};
@@ -216,9 +218,9 @@
   virtualisation.vmVariant = {
     # following configuration is added only when building VM with build-vm
     virtualisation = {
-      memorySize =  2048; # Use 2048MiB memory.
-      cores = 3;         
-      # 
+      memorySize = 2048; # Use 2048MiB memory.
+      cores = 3;
+      #
     };
   };
 
@@ -270,5 +272,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
-
 }
