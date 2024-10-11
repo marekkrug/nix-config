@@ -18,6 +18,7 @@
     # <nixos/nixos/modules/virtualisation/virtualbox-image.nix> # If i should need an iso image
     ./system/borg-backup.nix
     ./system/enable-numlock.nix
+    ./system/android.nix
     #./system/cron.nix
   ];
 
