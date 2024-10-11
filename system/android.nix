@@ -2,12 +2,11 @@
 {
   environment.systemPackages = with pkgs; [
     p7zip
-    adb
+    android-tools
     curl
-    whiptail
     pv
     bc
-    secure-delete
     zenity
+    dialog
   ];
 }
