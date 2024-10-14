@@ -4,7 +4,7 @@
   imports = [
     # Import nix files from the user folder:
     ./user/sh.nix
-    ./user/nvchad.nix
+    #./user/nvchad.nix
   ];
   
   # Home Manager needs a bit of information about you and the

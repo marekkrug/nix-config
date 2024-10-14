@@ -49,6 +49,7 @@ borg create                         \
     --exclude '/home/murmeldin/VirtualBox VMs/*' \
     --exclude '/home/murmeldin/go/*' \
     --exclude '/home/murmeldin/SteamGames/*' \
+    --exclude '*Cache_Data*'        \
                                     \
     ::'{hostname}-{now}'            \
     /etc                            \

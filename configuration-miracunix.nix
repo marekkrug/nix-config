@@ -188,6 +188,11 @@
     parted
     cryptsetup
     tree
+    home-manager
+    sshfs
+    cups-brother-mfcl2750dw
+    nmap
+    obs-studio
   ];
 
   
@@ -239,7 +244,7 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 30d";
+    options = "--delete-older-than 7d";
   };
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -255,7 +260,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

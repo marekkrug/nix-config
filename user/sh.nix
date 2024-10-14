@@ -21,6 +21,7 @@
         my-ip4 = "ip addr show | grep 192";
         my-folder-size-analyzer = "du -shx ./* | sort -h";
         my-borg-backup = "sudo /home/murmeldin/.dotfiles/borg_backup.sh";
+        my-storage-saver = "nix-store --optimise";
         gs = "git status";
         # defaults:
         ll = "ls -l";

@@ -10,10 +10,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nvchad4nix = {
-      url = "github:NvChad/nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # nvchad4nix = {
+    #   url = "github:NvChad/nix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... }@inputs:
