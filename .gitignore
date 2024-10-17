@@ -1,2 +1,4 @@
 *.qcow*
 result
+tmp
+flake.lock

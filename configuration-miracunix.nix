@@ -124,11 +124,10 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
-    bitwarden-desktop
+    #bitwarden-desktop
     thunderbird
     spotify
     #(unstablePkgs.steam)
-    ticktick
     vlc
     blender
     # Office:
@@ -177,7 +176,6 @@
     powertop
     inkscape
     obsidian
-    texliveSmall
     sof-firmware
     discord
     languagetool

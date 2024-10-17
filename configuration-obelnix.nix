@@ -133,7 +133,6 @@
     thunderbird
     spotify
     #(unstablePkgs.steam)
-    ticktick
     vlc
     blender
     # Office:
@@ -242,7 +241,7 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 30d";
+    options = "--delete-older-than 7d";
   };
 
   # Some programs need SUID wrappers, can be configured further or are
