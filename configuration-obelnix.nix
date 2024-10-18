@@ -194,6 +194,7 @@
     tree
     home-manager
     protonmail-desktop
+    minecraft-launcher
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
