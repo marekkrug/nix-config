@@ -188,6 +188,7 @@
     parted
     cryptsetup
     tree
+    protonmail-desktop
   ];
 
   

@@ -194,6 +194,7 @@
     cryptsetup
     tree
     home-manager
+    protonmail-desktop
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
