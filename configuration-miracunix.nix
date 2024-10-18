@@ -124,11 +124,10 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
-    bitwarden-desktop
+    #bitwarden-desktop
     thunderbird
     spotify
     #(unstablePkgs.steam)
-    ticktick
     vlc
     blender
     # Office:
@@ -177,7 +176,6 @@
     powertop
     inkscape
     obsidian
-    texliveSmall
     sof-firmware
     discord
     languagetool
@@ -188,7 +186,15 @@
     parted
     cryptsetup
     tree
+<<<<<<< HEAD
     protonmail-desktop
+=======
+    home-manager
+    sshfs
+    cups-brother-mfcl2750dw
+    nmap
+    obs-studio
+>>>>>>> refs/remotes/origin/main
   ];
 
   
@@ -240,7 +246,7 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 30d";
+    options = "--delete-older-than 7d";
   };
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -256,7 +262,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
