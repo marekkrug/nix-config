@@ -186,15 +186,11 @@
     parted
     cryptsetup
     tree
-<<<<<<< HEAD
-    protonmail-desktop
-=======
     home-manager
     sshfs
     cups-brother-mfcl2750dw
     nmap
     obs-studio
->>>>>>> refs/remotes/origin/main
   ];
 
   
