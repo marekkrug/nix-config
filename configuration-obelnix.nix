@@ -96,8 +96,8 @@
     isNormalUser = true;
     description = "murmeldin";
     extraGroups = ["networkmanager" "wheel"];
-    packages = with pkgs; [
-      #  thunderbird
+    packages = with stablePkgs; [
+      #minecraft
     ];
   };
 
@@ -126,75 +126,73 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
 
-  environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    bitwarden-desktop
-    thunderbird
-    spotify
+  environment.systemPackages = [
+    pkgs.vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    pkgs.wget
+    #pkgs.bitwarden-desktop
+    pkgs.thunderbird
+    pkgs.spotify
     #(unstablePkgs.steam)
-    vlc
-    blender
+    pkgs.vlc
+    pkgs.blender
     # Office:
-    libreoffice
+    pkgs.libreoffice
     #texstudio
     #texliveFull
-    pandoc
-    gparted
-    gimp
+    pkgs.pandoc
+    pkgs.gparted
+    pkgs.gimp
     # Kommunikation:
-    signal-desktop
-    telegram-desktop
-    element-desktop
-    yt-dlp
+    pkgs.signal-desktop
+    pkgs.telegram-desktop
+    pkgs.element-desktop
+    pkgs.yt-dlp
     # Programming:
     #jetbrains.rust-rover
-    rustup
-    gccgo14
-    openssl
-    pkg-config
-    vscodium
-    vscode
-    git
-    sqlite
+    pkgs.rustup
+    pkgs.gccgo14
+    pkgs.openssl
+    pkgs.pkg-config
+    pkgs.vscodium
+    pkgs.vscode
+    pkgs.git
+    pkgs.sqlite
     #Terminal:
-    tldr
-    btop
-    htop
-    thefuck
+    pkgs.tldr
+    pkgs.btop
+    pkgs.htop
+    pkgs.thefuck
     # Geld:
-    monero-gui
+    pkgs.monero-gui
     # NixOS:
-    neofetch
+    pkgs.neofetch
     #just
     # AI Stuff:
-    ollama
-    upscayl
-    chromium
+    pkgs.ollama
+    pkgs.upscayl
+    pkgs.chromium
     #waydroid
     #sof-firmware
-    tlp
-    mission-center
-    stress
-    squashfsTools
-    prusa-slicer
-    powertop
-    inkscape
-    obsidian
-    texliveSmall
-    sof-firmware
-    discord
-    languagetool
-    fasttext
-    nix-output-monitor
-    cabal-install
-    ghc
-    parted
-    cryptsetup
-    tree
-    home-manager
-    protonmail-desktop
-    minecraft-launcher
+    pkgs.tlp
+    stablePkgs.mission-center
+    pkgs.stress
+    pkgs.squashfsTools
+    pkgs.prusa-slicer
+    pkgs.powertop
+    pkgs.inkscape
+    pkgs.obsidian
+    pkgs.texliveSmall
+    pkgs.sof-firmware
+    pkgs.discord
+    pkgs.languagetool
+    pkgs.fasttext
+    pkgs.nix-output-monitor
+    pkgs.cabal-install
+    pkgs.ghc
+    pkgs.parted
+    pkgs.cryptsetup
+    pkgs.tree
+    pkgs.home-manager
   ];
 
   nixpkgs.config.permittedInsecurePackages = [

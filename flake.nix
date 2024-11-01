@@ -22,7 +22,7 @@
       pkgs = import nixpkgs { inherit system;  config.allowUnfree = true; };
       stablePkgs = import nixpkgs-stable { inherit system;  config.allowUnfree = true; };
       extraSpecialArgs = { inherit system; inherit inputs; };  # <- passing inputs to the attribute set for home-manager
-      specialArgs = { inherit system; inherit inputs; };       # <- passing inputs to the attribute set for NixOS (optional)
+      specialArgs = { inherit system; inherit inputs; inherit pkgs; inherit stablePkgs; };       # <- passing inputs to the attribute set for NixOS (optional)
       hmLib = home-manager.lib;
     in
     {
