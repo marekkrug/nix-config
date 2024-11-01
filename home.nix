@@ -21,6 +21,13 @@
   # changes in each release.  # You can update Home Manager without changing this value. See
 
   home.stateVersion = "24.11";
+  
+  home.packages = [
+    pkgs.python3Full
+    pkgs.tcl
+    pkgs.tk
+  ];
+  
   programs = {
      # Let Home Manager install and manage itself.
     home-manager.enable = true;
@@ -165,6 +172,12 @@
               HostName 217.115.15.84
               User git
               IdentityFile ~/.ssh/plenum-bot-cccb
+
+      Host netcup-vm
+        Hostname netcup.marekkrug.de
+        User netcup_vm
+        Port 22
+        IdentityFile ~/.ssh/id_netcup.pub
       '';
     };
 }

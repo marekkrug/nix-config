@@ -55,6 +55,7 @@
       go
       gopls
       python3
+      python313
       #python3.packages.pip
       # aus ubuntu config
       bison
