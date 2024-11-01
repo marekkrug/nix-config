@@ -124,7 +124,7 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
-    #bitwarden-desktop
+    bitwarden-desktop
     thunderbird
     spotify
     #(unstablePkgs.steam)
@@ -184,17 +184,23 @@
     cabal-install
     ghc
     parted
+    xz
     cryptsetup
     tree
-<<<<<<< HEAD
-    protonmail-desktop
-=======
     home-manager
     sshfs
     cups-brother-mfcl2750dw
     nmap
     obs-studio
->>>>>>> refs/remotes/origin/main
+    nvme-cli
+    hugo
+    rpi-imager
+    prismlauncher
+    tailscale-systray
+    gnumake
+    dotnet-sdk_8
+    xz
+
   ];
 
   
@@ -212,6 +218,7 @@
   services.mullvad-vpn = {
     enable = true;
   };
+  services.tailscale.enable = true;
 
   # NixOS Virtualization:
 
@@ -248,6 +255,8 @@
     dates = "weekly";
     options = "--delete-older-than 7d";
   };
+
+  programs.nix-ld.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
