@@ -193,6 +193,7 @@
     pkgs.cryptsetup
     pkgs.tree
     pkgs.home-manager
+    pkgs.prismlauncher
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
