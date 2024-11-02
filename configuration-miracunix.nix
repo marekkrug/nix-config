@@ -14,6 +14,7 @@
       ./system/smart-pricer.nix
       # <nixos/nixos/modules/virtualisation/virtualbox-image.nix> # If i should need an iso image
       ./system/borg-backup.nix
+      ./system/nginx.nix
       #./system/cron.nix
     ];
 
@@ -124,7 +125,7 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
-    bitwarden-desktop
+    #bitwarden-desktop
     thunderbird
     spotify
     #(unstablePkgs.steam)
