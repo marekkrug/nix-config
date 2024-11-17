@@ -2,8 +2,7 @@
   description = "Nixos config flake";
 
   inputs = {
-    nixpkgs-stable.url = "github:NixOS/nixpkgs?ref=nixos-24.05";
-    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-24.05";
 
     home-manager = {
       url = "github:nix-community/home-manager?ref=master";
@@ -16,13 +15,11 @@
     # };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system;  config.allowUnfree = true; };
-      stablePkgs = import nixpkgs-stable { inherit system;  config.allowUnfree = true; };
-      extraSpecialArgs = { inherit system; inherit inputs; };  # <- passing inputs to the attribute set for home-manager
-      specialArgs = { inherit system; inherit inputs; inherit pkgs; inherit stablePkgs; };       # <- passing inputs to the attribute set for NixOS (optional)
+      specialArgs = { inherit system; inherit inputs; inherit pkgs;};       # <- passing inputs to the attribute set for NixOS (optional)
       hmLib = home-manager.lib;
     in
     {
@@ -46,7 +43,6 @@
       homeConfigurations = {
         murmeldin = hmLib.homeManagerConfiguration {
           pkgs = pkgs;
-          extraSpecialArgs = extraSpecialArgs;
           modules = [
             ./home.nix
           ];

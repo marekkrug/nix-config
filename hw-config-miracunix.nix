@@ -8,49 +8,34 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "usbhid" "sd_mod" "rtsx_pci_sdmmc" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "uas" "sd_mod" "sdhci_pci" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" "dm-raid" ];
+  boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/df307362-e08e-4c80-bfea-7ad1924aa57a";
+    { device = "/dev/disk/by-uuid/b0b093d1-a361-4095-be7c-3e790bca8e3b";
       fsType = "ext4";
     };
+
+  boot.initrd.luks.devices."luks-9b073bec-e348-4496-82f3-e520d29fecc9".device = "/dev/disk/by-uuid/9b073bec-e348-4496-82f3-e520d29fecc9";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/8912-8EE5";
+    { device = "/dev/disk/by-uuid/7ECA-38BB";
       fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
+      options = [ "fmask=0077" "dmask=0077" ];
     };
 
-  fileSystems."/mnt/data+games" =
-    { device = "/dev/disk/by-uuid/72BA-EA5C";
-      fsType = "exfat";
-      options = [ # If you don't have this options attribute, it'll default to "defaults" 
-        # boot options for fstab. Search up fstab mount options you can use
-        "users" # Allows any user to mount and unmount
-        "nofail" # Prevent system from failing if this drive doesn't mount
-   ];
-    };
-  
-  fileSystems."/mnt/swap-disk" = 
-    { device = "/dev/disk/by-uuid/50ad4f6d-a839-4398-94d3-ee5e0a0f7002";
-      fsType = "ext4";
-    };
-
-
-  swapDevices = [ {
-    device = "/mnt/swap-disk/swapfile";
-    size = 12*1024;
-  } ];
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/75b74126-6457-412e-9f8d-879341a4729e"; }
+    ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp0s20f3.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

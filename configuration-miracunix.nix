@@ -4,7 +4,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, stablePkgs, inputs, ... }:
+{ config, pkgs, inputs, ... }:
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -15,6 +15,13 @@
       # <nixos/nixos/modules/virtualisation/virtualbox-image.nix> # If i should need an iso image
       ./system/borg-backup.nix
       ./system/nginx.nix
+      ./system/packages/coding.nix
+      #./system/packages/ai-tools.nix
+      ./system/packages/communication.nix
+      ./system/packages/monitoring-tools.nix
+      ./system/packages/office.nix
+      ./system/packages/terminal-tools.nix
+      ./system/fingerprint-scanner.nix
       #./system/cron.nix
     ];
 
@@ -126,74 +133,40 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     #bitwarden-desktop
-    thunderbird
     spotify
-    #(unstablePkgs.steam)
     vlc
     blender
     # Office:
-    libreoffice
     #texstudio
     #texliveFull
     pandoc
-    gparted
     gimp
     # Kommunikation:
-    signal-desktop
-    telegram-desktop
-    element-desktop
+
     yt-dlp
     # Programming:
     #jetbrains.rust-rover
-    rustup
-    gccgo14
-    openssl
-    pkg-config
-    vscodium
-    vscode
-    git
     sqlite
-    #Terminal:
-    tldr
-    btop
-    htop
-    thefuck
     # Geld:
     monero-gui
-    # NixOS:
-    neofetch
-    #just
-    # AI Stuff:
-    ollama
-    upscayl
     chromium
     #waydroid
     #sof-firmware
     tlp
-    mission-center
-    stress
     squashfsTools
     prusa-slicer
-    powertop
     inkscape
-    obsidian
     sof-firmware
-    discord
     languagetool
     fasttext
-    nix-output-monitor
     cabal-install
     ghc
     parted
     xz
     cryptsetup
-    tree
     home-manager
     sshfs
-    cups-brother-mfcl2750dw
-    nmap
     obs-studio
-    nvme-cli
     hugo
     rpi-imager
     prismlauncher
@@ -201,7 +174,7 @@
     gnumake
     dotnet-sdk_8
     xz
-
+    gnome.pomodoro
   ];
 
   
@@ -209,6 +182,8 @@
     "jitsi-meet-1.0.8043"
   ];
   
+
+  boot.kernelParams = [ "ec_reset=1" ];
 
 
   # Power management
@@ -219,6 +194,7 @@
   services.mullvad-vpn = {
     enable = true;
   };
+  services.resolved.enable = true;
   services.tailscale.enable = true;
 
   # NixOS Virtualization:
@@ -247,7 +223,7 @@
 
   # Android vm:
 
-  virtualisation.waydroid.enable = true;
+  # virtualisation.waydroid.enable = true;
 
   # Auto-delete old generations:
 
