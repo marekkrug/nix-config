@@ -21,8 +21,7 @@
       ./system/packages/monitoring-tools.nix
       ./system/packages/office.nix
       ./system/packages/terminal-tools.nix
-      ./system/fingerprint-scanner.nix
-      ./system/thinkpad.nix
+      ./system/thinkpad-extra-settings.nix
       #./system/cron.nix
     ];
 
