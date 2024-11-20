@@ -10,5 +10,6 @@
     tree
     gparted
     nvme-cli
+    smartmontools
   ];
 }

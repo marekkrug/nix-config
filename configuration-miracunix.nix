@@ -145,7 +145,6 @@
 
     yt-dlp
     # Programming:
-    #jetbrains.rust-rover
     sqlite
     # Geld:
     monero-gui

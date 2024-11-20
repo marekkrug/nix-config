@@ -59,8 +59,6 @@
       #python3.packages.pip
       # aus ubuntu config
       bison
-      jetbrains.goland
-      jetbrains.pycharm-community
       git
       git-lfs
       google-chrome

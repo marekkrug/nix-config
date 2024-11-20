@@ -7,6 +7,10 @@
     serviceConfig.Type = "simple";
   };
 
+  environment.systemPackages = [
+    pkgs.fprintd
+  ];
+
   # Install the driver
   services.fprintd.enable = true;
   # If simply enabling fprintd is not enough, try enabling fprintd.tod...
