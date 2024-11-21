@@ -14,6 +14,7 @@
         my-home-update = "cd ~/.dotfiles/ && git pull && git push && home-manager switch --flake .";
         cd-dotfiles = "cd ~/.dotfiles/";
         my-upgrade = "cd ~/.dotfiles/ && git pull && git push && sudo nix flake update && sudo nixos-rebuild switch --upgrade --flake .";
+        my-boot-upgrade = "cd ~/.dotfiles/ && git pull && git push && sudo nix flake update && sudo nixos-rebuild boot --upgrade --flake .";
         my-flake-upgrade = "sudo nix flake update";
         my-pull = "git -C ~/Repos/nixos-configuration pull --rebase";
         #my-test = "sudo nixos-rebuild test";

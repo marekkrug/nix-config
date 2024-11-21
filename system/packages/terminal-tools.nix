@@ -5,6 +5,11 @@
     thefuck
     nix-output-monitor
     neofetch
-
+    pandoc
+    yt-dlp
   ];
+
+  programs = {
+    zsh.enable = true;
+	};
 }

@@ -20,6 +20,7 @@
       ./system/packages/communication.nix
       ./system/packages/monitoring-tools.nix
       ./system/packages/office.nix
+      ./system/packages/gaming.nix
       ./system/packages/terminal-tools.nix
       ./system/thinkpad-extra-settings.nix
       #./system/cron.nix
@@ -109,9 +110,7 @@
 
   programs = {
     firefox.enable = true;
-    steam.enable = true;
     direnv.enable = true;
-    zsh.enable = true;
 	};
  
   nixpkgs = { 
@@ -132,47 +131,26 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
-    #bitwarden-desktop
+    bitwarden-desktop
     spotify
     vlc
     blender
-    # Office:
-    #texstudio
-    #texliveFull
-    pandoc
     gimp
-    # Kommunikation:
-
-    yt-dlp
-    # Programming:
-    sqlite
-    # Geld:
     monero-gui
     chromium
-    #waydroid
-    #sof-firmware
-    tlp
+    tlp # power management
     squashfsTools
     prusa-slicer
     inkscape
     sof-firmware
-    languagetool
-    fasttext
-    cabal-install
-    ghc
     parted
-    xz
     cryptsetup
     home-manager
     sshfs
     obs-studio
     hugo
     rpi-imager
-    prismlauncher
     tailscale-systray
-    gnumake
-    dotnet-sdk_8
-    xz
     gnome.pomodoro
   ];
 
