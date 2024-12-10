@@ -4,6 +4,7 @@
   imports = [
     # Import nix files from the user folder:
     ./user/sh.nix
+    ./user/ssh.nix
     #./user/nvchad.nix
   ];
   

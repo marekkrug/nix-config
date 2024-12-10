@@ -68,9 +68,9 @@
             Port 22
 
     Host nobody-git
-            HostName 217.115.15.84
-            User git
-            IdentityFile ~/.ssh/plenum-bot-cccb
+      HostName 217.115.15.84
+      User git
+      IdentityFile ~/.ssh/laptop-miracunix.pub
 
     Host netcup-vm
       Hostname netcup.marekkrug.de

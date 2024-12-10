@@ -14,12 +14,13 @@
       ./system/smart-pricer.nix
       # <nixos/nixos/modules/virtualisation/virtualbox-image.nix> # If i should need an iso image
       ./system/borg-backup.nix
-      ./system/nginx.nix
+      #./system/nginx.nix
       ./system/packages/coding.nix
-      #./system/packages/ai-tools.nix
+      ./system/packages/ai-tools.nix
       ./system/packages/communication.nix
       ./system/packages/monitoring-tools.nix
       ./system/packages/office.nix
+      ./system/packages/3d-modelling.nix
       ./system/packages/gaming.nix
       ./system/packages/terminal-tools.nix
       ./system/thinkpad-extra-settings.nix
@@ -88,6 +89,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    wireplumber.enable = true;
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
   };
@@ -134,7 +136,6 @@
     bitwarden-desktop
     spotify
     vlc
-    blender
     gimp
     monero-gui
     chromium
@@ -152,13 +153,12 @@
     rpi-imager
     tailscale-systray
     gnome.pomodoro
+    clairvoyant
+    blanket
+    geogebra6
+    #libspa-bluetooth
+    wireplumber
   ];
-
-  
-  nixpkgs.config.permittedInsecurePackages = [
-    "jitsi-meet-1.0.8043"
-  ];
-  
 
   boot.kernelParams = [ "ec_reset=1" ];
 

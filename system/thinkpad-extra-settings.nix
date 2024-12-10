@@ -9,6 +9,10 @@
   #   settings = {
   #     START_CHARGE_THRESH_BAT0 = 75;
   #     STOP_CHARGE_THRESH_BAT0 = 85;
+
+  #     CPU_ENERGY_PERF_POLICY_ON_AC="balance_performance";
+  #     CPU_ENERGY_PERF_POLICY_ON_BAT="power";
+
   #   };
   # };
 
@@ -53,4 +57,16 @@
   # services.fprintd.tod.driver = pkgs.libfprint-2-tod1-elan # Elan(04f3:0c4b) driver
   # services.fprintd.tod.driver = pkgs.libfprint-2-tod1-vfs0090; # driver for 2016 ThinkPads
   # services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix-550a # Goodix 550a driver (from Lenovo)
+
+  hardware.bluetooth = {
+    enable = true;
+    package = pkgs.bluez;
+    settings = {
+      General = {
+        Enable = "Source,Sink,Media,Socket";
+        ControllerMode = "bredr";
+        FastConnectable = "x^true";
+      };
+    };
+  };
 }
