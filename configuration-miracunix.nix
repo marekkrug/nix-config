@@ -152,7 +152,7 @@
     hugo
     rpi-imager
     tailscale-systray
-    gnome.pomodoro
+    gnome-pomodoro
     clairvoyant
     blanket
     geogebra6

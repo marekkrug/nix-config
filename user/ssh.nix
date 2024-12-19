@@ -4,20 +4,21 @@
   programs.ssh = {
     enable = true;
     extraConfig = ''
-      Host github.com
+    Host github.com
       Hostname github.com
       User git
 
-      Host gitlab.com
+    Host gitlab.com
       Hostname gitlab.com
       User git
 
-      Host avd-power
-      Hostname 195.160.172.25
+    Host avd-power
+      Hostname avd-jumphost.club.berlin.ccc.de
       User power
       IdentityFile ~/.ssh/cccb-power
 
     Host snowden
+      IdentityFile ~/.ssh/laptop-miracunix
       HostName snowden.berlin.ccc.de
       User murmeldin
       LocalForward 3948 hass.club.berlin.ccc.de:443
@@ -25,10 +26,10 @@
       LocalForward 5647 172.23.43.147:80
 
     Host avd.club.berlin.ccc.de avd
-      IdentityFile ~/.ssh/cccb-projekte
+      IdentityFile ~/.ssh/laptop-miracunix
       # should be 195.160.172.24||avd.berlin.ccc.de| but doesn_t work
-      # Hostname avd.club.berlin.ccc.de
-      Hostname 195.160.172.24
+      Hostname avd.club.berlin.ccc.de
+      # Hostname 195.160.172.24
       # Hostname 194.29.233.27
       # Hostname 172.23.42.106
       # Hostname 2001:678:560:42::24
@@ -40,6 +41,7 @@
       LocalForward 6006 127.0.0.1:6006
       LocalForward 9000 127.0.0.1:7860
       LocalForward 11434 127.0.0.1:1143
+      LocalForward 3948 hass.club.berlin.ccc.de:443
 
     Host nas-home
       Hostname fz6galkcgq4jhexn.myfritz.net
@@ -63,9 +65,9 @@
       Port 11255
 
     Host ubuntu-vm.local
-            Hostname 192.168.178.86
-            User ubuntu-vm
-            Port 22
+      Hostname 192.168.178.86
+      User ubuntu-vm
+      Port 22
 
     Host nobody-git
       HostName 217.115.15.84

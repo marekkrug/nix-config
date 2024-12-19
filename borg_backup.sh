@@ -54,6 +54,8 @@ borg create                         \
     --exclude '/home/*/go'        \
     --exclude '*Cache*'        \
     --exclude '*cache*'        \
+    --exclude '*Downloads/yt-dlp/*'        \
+    --exclude '*.ollama/models*'        \
                                     \
     ::'{hostname}-{now}'            \
     /home                           \
@@ -73,9 +75,9 @@ borg prune                          \
     --list                          \
     --glob-archives '{hostname}-*'  \
     --show-rc                       \
-    --keep-daily    7               \
-    --keep-weekly   4               \
-    --keep-monthly  6               \
+    --keep-daily    3               \
+    --keep-weekly   2               \
+    --keep-monthly  4               \
 
 prune_exit=$?
 
