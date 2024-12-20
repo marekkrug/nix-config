@@ -5,7 +5,7 @@
 {
   services.mediawiki = {
     enable = true;
-    # Prior to NixOS 24.05, there is a admin name bug that prevents using spaces in the mediawiki name https://github.com/NixOS/nixpkgs/issues/298902
+    # Pr3000ior to NixOS 24.05, there is a admin name bug that prevents using spaces in the mediawiki name https://github.com/NixOS/nixpkgs/issues/298902
     name = "Test_MediaWiki";
     httpd.virtualHost = {
       hostName = "localhost";
@@ -16,7 +16,7 @@
     passwordFile = pkgs.writeText "password" "cardbotnine";
     extraConfig = ''
       # Disable anonymous editing
-      $wgGroupPermissions['*']['edit'] = false;
+      $wgGroupPermissions['*']['edit'] = true;
     '';
 
     extensions = {

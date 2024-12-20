@@ -13,10 +13,11 @@
         my-update = "cd ~/.dotfiles/ && git pull && git push && sudo nixos-rebuild switch --flake .";
         my-home-update = "cd ~/.dotfiles/ && git pull && git push && home-manager switch --flake .";
         cd-dotfiles = "cd ~/.dotfiles/";
-        my-upgrade = "sudo bnixos-rebuild switch --upgrade --flake .";
-        my-flake-update = "sudo nix flake update";
+        my-upgrade = "cd ~/.dotfiles/ && git pull && git push && sudo nix flake update && sudo nixos-rebuild switch --upgrade --flake .";
+        my-boot-upgrade = "cd ~/.dotfiles/ && git pull && git push && sudo nix flake update && sudo nixos-rebuild boot --upgrade --flake .";
+        my-flake-upgrade = "sudo nix flake update";
         my-pull = "git -C ~/Repos/nixos-configuration pull --rebase";
-        my-test = "sudo nixos-rebuild test";
+        #my-test = "sudo nixos-rebuild test";
         my-direnvallow = "echo \"use nix\" > .envrc && direnv allow";
         my-ip4 = "ip addr show | grep 192";
         my-folder-size-analyzer = "du -shx ./* | sort -h";

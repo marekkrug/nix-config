@@ -17,7 +17,7 @@ fi
 
 # Setting this, so the repo does not need to be given on the commandline:
 export BORG_REPO='ssh://ubuntu-vm@ubuntu-vm:22/mnt/movie-hdd/backup-miracunix'
-export BORG_RSH='ssh -i /home/murmeldin/.ssh/id_ed25519_backup'
+export BORG_RSH='ssh -i /home/murmeldin/.ssh/laptop-miracunix'
 
 # Setting this, so you won't be asked for your repository passphrase:
 #read -s -p "Repo passphrase : " PASSPHRASE
@@ -50,11 +50,15 @@ borg create                         \
     --exclude '/home/murmeldin/go/*' \
     --exclude '/home/murmeldin/SteamGames/*' \
     --exclude '*Cache_Data*'        \
+    --exclude '/home/*/SteamGames'        \
+    --exclude '/home/*/go'        \
+    --exclude '*Cache*'        \
+    --exclude '*cache*'        \
+    --exclude '*Downloads/yt-dlp/*'        \
+    --exclude '*.ollama/models*'        \
                                     \
     ::'{hostname}-{now}'            \
-    /etc                            \
     /home                           \
-    /root                           \
 #    /srv/ftp                        \
 #    /srv/http
 
@@ -71,9 +75,9 @@ borg prune                          \
     --list                          \
     --glob-archives '{hostname}-*'  \
     --show-rc                       \
-    --keep-daily    7               \
-    --keep-weekly   4               \
-    --keep-monthly  6               \
+    --keep-daily    3               \
+    --keep-weekly   2               \
+    --keep-monthly  4               \
 
 prune_exit=$?
 

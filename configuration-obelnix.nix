@@ -5,7 +5,6 @@
 {
   config,
   pkgs,
-  stablePkgs,
   inputs,
   ...
 }: {
@@ -97,7 +96,7 @@
     isNormalUser = true;
     description = "murmeldin";
     extraGroups = ["networkmanager" "wheel"];
-    packages = with stablePkgs; [
+    packages = with pkgs; [
       #minecraft
     ];
   };
@@ -127,13 +126,12 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
 
-  environment.systemPackages = with stablePkgs; [
+  environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     #bitwarden-desktop
     thunderbird
     spotify
-    #(unstablesteam)
     vlc
     blender
     # Office:
@@ -172,7 +170,6 @@
     ollama
     upscayl
     chromium
-    #waydroid
     #sof-firmware
     tlp
     mission-center
@@ -195,8 +192,6 @@
     tree
     home-manager
     prismlauncher
-    pciutils
-    ntfs3g
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
@@ -238,7 +233,7 @@
 
   # Android vm:
 
-  virtualisation.waydroid.enable = true;
+  # virtualisation.waydroid.enable = true;
 
   # Auto-delete old generations:
 
