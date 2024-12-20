@@ -102,7 +102,7 @@
   };
 
   # Enable zshell as default:
-  users.defaultUserShell = stablePkgs.zsh;
+  users.defaultUserShell = pkgs.zsh;
 
   programs = {
     firefox.enable = true;
