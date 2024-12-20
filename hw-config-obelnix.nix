@@ -9,9 +9,9 @@
     ];
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.kernelModules = [ "nvidia" ];
   boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
+  boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/1b2264a4-ff98-4f1e-a85d-7210082b827e";
@@ -19,9 +19,19 @@
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/7C1A-DF30";
+    { device = "/dev/disk/by-uuid/2939-8466";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
+    };
+
+  fileSystems."/home/murmeldin/steamgames" =
+    { device = "/dev/disk/by-uuid/a83c3728-b931-40a5-b928-366ba83e7d7e";
+      fsType = "ext4";
+      options = [ # If you don't have this options attribute, it'll default to "defaults" 
+        # boot options for fstab. Search up fstab mount options you can use
+        "users" # Allows any user to mount and unmount
+        "nofail" # Prevent system from failing if this drive doesn't mount
+      ];
     };
 
   swapDevices = [ ];

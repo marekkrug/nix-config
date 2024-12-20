@@ -19,6 +19,7 @@
     ./system/borg-backup.nix
     ./system/enable-numlock.nix
     ./system/android.nix
+    ./system/nvidia.nix
     #./system/cron.nix
   ];
 
@@ -102,7 +103,7 @@
   };
 
   # Enable zshell as default:
-  users.defaultUserShell = pkgs.zsh;
+  users.defaultUserShell = stablePkgs.zsh;
 
   programs = {
     firefox.enable = true;
@@ -126,74 +127,76 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
 
-  environment.systemPackages = [
-    pkgs.vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    pkgs.wget
-    #pkgs.bitwarden-desktop
-    pkgs.thunderbird
-    pkgs.spotify
-    #(unstablePkgs.steam)
-    pkgs.vlc
-    pkgs.blender
+  environment.systemPackages = with stablePkgs; [
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    wget
+    #bitwarden-desktop
+    thunderbird
+    spotify
+    #(unstablesteam)
+    vlc
+    blender
     # Office:
-    pkgs.libreoffice
+    libreoffice
     #texstudio
     #texliveFull
-    pkgs.pandoc
-    pkgs.gparted
-    pkgs.gimp
+    pandoc
+    gparted
+    gimp
     # Kommunikation:
-    pkgs.signal-desktop
-    pkgs.telegram-desktop
-    pkgs.element-desktop
-    pkgs.yt-dlp
+    signal-desktop
+    telegram-desktop
+    element-desktop
+    yt-dlp
     # Programming:
     #jetbrains.rust-rover
-    pkgs.rustup
-    pkgs.gccgo14
-    pkgs.openssl
-    pkgs.pkg-config
-    pkgs.vscodium
-    pkgs.vscode
-    pkgs.git
-    pkgs.sqlite
+    rustup
+    gccgo14
+    openssl
+    pkg-config
+    vscodium
+    vscode
+    git
+    sqlite
     #Terminal:
-    pkgs.tldr
-    pkgs.btop
-    pkgs.htop
-    pkgs.thefuck
+    tldr
+    btop
+    htop
+    thefuck
     # Geld:
-    pkgs.monero-gui
+    monero-gui
     # NixOS:
-    pkgs.neofetch
+    neofetch
     #just
     # AI Stuff:
-    pkgs.ollama
-    pkgs.upscayl
-    pkgs.chromium
+    ollama
+    upscayl
+    chromium
     #waydroid
     #sof-firmware
-    pkgs.tlp
-    stablePkgs.mission-center
-    pkgs.stress
-    pkgs.squashfsTools
-    pkgs.prusa-slicer
-    pkgs.powertop
-    pkgs.inkscape
-    pkgs.obsidian
-    pkgs.texliveSmall
-    pkgs.sof-firmware
-    pkgs.discord
-    pkgs.languagetool
-    pkgs.fasttext
-    pkgs.nix-output-monitor
-    pkgs.cabal-install
-    pkgs.ghc
-    pkgs.parted
-    pkgs.cryptsetup
-    pkgs.tree
-    pkgs.home-manager
-    pkgs.prismlauncher
+    tlp
+    mission-center
+    stress
+    squashfsTools
+    prusa-slicer
+    powertop
+    inkscape
+    obsidian
+    texliveSmall
+    sof-firmware
+    discord
+    languagetool
+    fasttext
+    nix-output-monitor
+    cabal-install
+    ghc
+    parted
+    cryptsetup
+    tree
+    home-manager
+    prismlauncher
+    pciutils
+    ntfs3g
   ];
 
   nixpkgs.config.permittedInsecurePackages = [

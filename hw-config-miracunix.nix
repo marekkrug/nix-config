@@ -31,7 +31,7 @@
         # boot options for fstab. Search up fstab mount options you can use
         "users" # Allows any user to mount and unmount
         "nofail" # Prevent system from failing if this drive doesn't mount
-   ];
+      ];
     };
   
   fileSystems."/mnt/swap-disk" = 
