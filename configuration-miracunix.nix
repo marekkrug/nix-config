@@ -24,6 +24,7 @@
       ./system/packages/gaming.nix
       ./system/packages/terminal-tools.nix
       ./system/thinkpad-extra-settings.nix
+      ./system/disks.nix
       #./system/cron.nix
     ];
 

@@ -7,16 +7,15 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
-# Überprüfen, ob der Backup-Server erreichbar ist (egal ob per WLAN oder VPN)
-# ping -c 1 ubuntu-vm &> /dev/null
-# if [ $? -ne 0 ]; then
-#     echo "Backup-Server nicht erreichbar. Backup wird nicht gestartet."
-#     exit 0
-# fi
+# Überprüfen, ob der Ordner existiert und die Festplatte angeschlossen ist
+if [ ! -d "/mnt/movie-hdd" ]; then 
+    echo "Festplatte nicht angeschlossen oder Ordner nicht vorhanden"
+    exit 1
+fi
 
-
-export BORG_REPO='/run/media/murmeldin/backup_cold/borg'
-#export BORG_RSH='ssh -i /home/murmeldin/.ssh/id_ed25519_backup'
+# Setting this, so the repo does not need to be given on the commandline:
+export BORG_REPO='ssh://ubuntu-vm@ubuntu-vm:22/mnt/movie-hdd/backup-miracunix'
+export BORG_RSH='ssh -i /home/murmeldin/.ssh/laptop-miracunix'
 
 # Setting this, so you won't be asked for your repository passphrase:
 #read -s -p "Repo passphrase : " PASSPHRASE
@@ -38,7 +37,6 @@ borg create                         \
     --filter AME                    \
     --list                          \
     --stats                         \
-    --progress                      \
     --show-rc                       \
     --compression none              \
     --exclude-caches                \
@@ -49,9 +47,18 @@ borg create                         \
     --exclude '/home/murmeldin/VirtualBox VMs/*' \
     --exclude '/home/murmeldin/go/*' \
     --exclude '/home/murmeldin/SteamGames/*' \
+    --exclude '*Cache_Data*'        \
+    --exclude '/home/*/SteamGames'        \
+    --exclude '/home/*/go'        \
+    --exclude '*Cache*'        \
+    --exclude '*cache*'        \
+    --exclude '*Downloads/yt-dlp/*'        \
+    --exclude '*.ollama/models*'        \
                                     \
     ::'{hostname}-{now}'            \
-    /run/media/murmeldin/Sicherung5TB   \
+    /home                           \
+#    /srv/ftp                        \
+#    /srv/http
 
 backup_exit=$?
 
@@ -66,9 +73,9 @@ borg prune                          \
     --list                          \
     --glob-archives '{hostname}-*'  \
     --show-rc                       \
-    --keep-daily    7               \
-    --keep-weekly   4               \
-    --keep-monthly  6               \
+    --keep-daily    3               \
+    --keep-weekly   2               \
+    --keep-monthly  4               \
 
 prune_exit=$?
 
@@ -86,3 +93,4 @@ then
 fi
 
 exit ${global_exit}
+
