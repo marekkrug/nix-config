@@ -67,6 +67,7 @@
     Host ubuntu-vm.local
       Hostname 192.168.178.86
       User ubuntu-vm
+      LocalForward 2988 localhost:2987
       Port 22
 
     Host nobody-git

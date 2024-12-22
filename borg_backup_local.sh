@@ -8,13 +8,13 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 # Überprüfen, ob der Ordner existiert und die Festplatte angeschlossen ist
-if [ ! -d "/mnt/movie-hdd" ]; then 
+if [ ! -d "/run/media/murmeldin/cold_backup/cold_backup_miracunix" ]; then 
     echo "Festplatte nicht angeschlossen oder Ordner nicht vorhanden"
     exit 1
 fi
 
 # Setting this, so the repo does not need to be given on the commandline:
-export BORG_REPO='ssh://ubuntu-vm@ubuntu-vm:22/mnt/movie-hdd/backup-miracunix'
+export BORG_REPO='/run/media/murmeldin/cold_backup/cold_backup_miracunix'
 export BORG_RSH='ssh -i /home/murmeldin/.ssh/laptop-miracunix'
 
 # Setting this, so you won't be asked for your repository passphrase:
