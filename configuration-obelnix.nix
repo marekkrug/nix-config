@@ -18,6 +18,7 @@
     ./system/borg-backup.nix
     ./system/enable-numlock.nix
     ./system/android.nix
+    ./system/nvidia.nix
     #./system/cron.nix
   ];
 
