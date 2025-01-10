@@ -5,8 +5,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-24.11";
 
     home-manager = {
-      url = "github:nix-community/home-manager?ref=master";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/home-manager?nixos-24.11";
+      #inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # nvchad4nix = {
@@ -29,6 +29,11 @@
           modules = [
             ./configuration-miracunix.nix
             ./hw-config-miracunix.nix
+            home-manager.nixosModules.home-manager {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.murmeldin = import ./home-murmeldin.nix;
+            }
           ];
         };
         obelnix = nixpkgs.lib.nixosSystem {
@@ -36,15 +41,11 @@
           modules = [
             ./configuration-obelnix.nix
             ./hw-config-obelnix.nix
-          ];
-        };
-      };
-
-      homeConfigurations = {
-        murmeldin = hmLib.homeManagerConfiguration {
-          pkgs = pkgs;
-          modules = [
-            ./home.nix
+            home-manager.nixosModules.home-manager {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.murmeldin = import ./home-murmeldin.nix;
+            }
           ];
         };
       };

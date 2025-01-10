@@ -194,10 +194,6 @@
     prismlauncher
   ];
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "jitsi-meet-1.0.8043"
-  ];
-
   # Power management
   # services.tlp.enable = true;
 

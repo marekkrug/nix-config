@@ -7,6 +7,7 @@
     neofetch
     pandoc
     yt-dlp
+    tokei
   ];
 
   programs = {

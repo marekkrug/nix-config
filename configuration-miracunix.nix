@@ -125,6 +125,9 @@
     config = {
       # Allow unfree packages
       allowUnfree = true;
+      permittedInsecurePackages = [
+        "electron-27.3.11"
+      ];
     };
   };
 
@@ -159,6 +162,7 @@
     geogebra6
     #libspa-bluetooth
     wireplumber
+    rustdesk
   ];
 
   boot.kernelParams = [ "ec_reset=1" ];
@@ -174,34 +178,6 @@
   };
   services.resolved.enable = true;
   services.tailscale.enable = true;
-
-  # NixOS Virtualization:
-
-  users.users.nixosvmtest.isSystemUser = true ;
-  users.users.nixosvmtest.initialPassword = "test";
-  users.users.nixosvmtest.group = "nixosvmtest";
-  users.groups.nixosvmtest = {};
-
-  virtualisation.vmVariant = {
-    # following configuration is added only when building VM with build-vm
-    virtualisation = {
-      memorySize =  2048; # Use 2048MiB memory.
-      cores = 3;         
-      # 
-    };
-  };
-
-  environment.etc."lvm/lvm.conf".text = ''
-    config {
-    }
-    devices {
-      allow_mixed_block_sizes = 1
-    }
-  '';
-
-  # Android vm:
-
-  # virtualisation.waydroid.enable = true;
 
   # Auto-delete old generations:
 

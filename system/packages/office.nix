@@ -4,6 +4,8 @@
     libreoffice
     obsidian
     resilio-sync
-
+    typst
+    #logseq
   ];
+
 }
