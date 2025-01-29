@@ -21,7 +21,7 @@
       IdentityFile ~/.ssh/laptop-miracunix
       HostName snowden.berlin.ccc.de
       User murmeldin
-      LocalForward 3948 hass.club.berlin.ccc.de:443
+      LocalForward 3987 hass.club.berlin.ccc.de:443
       LocalForward 5839 localhost:8006
       LocalForward 5647 172.23.43.147:80
 
@@ -40,8 +40,9 @@
       LocalForward 8042 127.0.0.1:8042
       LocalForward 6006 127.0.0.1:6006
       LocalForward 9000 127.0.0.1:7860
+      LocalForward 8080 127.0.0.1:8080
       LocalForward 11434 127.0.0.1:1143
-      LocalForward 3948 hass.club.berlin.ccc.de:443
+      LocalForward 3987 hass.club.berlin.ccc.de:443
 
     Host nas-home
       Hostname fz6galkcgq4jhexn.myfritz.net
@@ -80,6 +81,12 @@
       User netcup_vm
       Port 22
       IdentityFile ~/.ssh/id_netcup.pub
+
+    Host cccb-website
+      Hostname 195.160.173.9
+      User deploy
+      Port 31337
+      IdentityFile ~/.ssh/laptop-miracunix.pub
     '';
   };
 }

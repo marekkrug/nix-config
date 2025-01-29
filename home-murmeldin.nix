@@ -31,7 +31,7 @@
   
   programs = {
      # Let Home Manager install and manage itself.
-    # home-manager.enable = true;
+    home-manager.enable = true;
     
     git = {
       enable = true;
@@ -98,9 +98,9 @@
 
     fzf.enable = true;
 
-    firefox = {
-      enable = true;
-    };
+    # firefox = {
+    #   enable = true;
+    # };
 
     };
 

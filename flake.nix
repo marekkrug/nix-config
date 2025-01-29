@@ -8,11 +8,6 @@
       url = "github:nix-community/home-manager?nixos-24.11";
       #inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # nvchad4nix = {
-    #   url = "github:NvChad/nix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
@@ -48,6 +43,15 @@
             }
           ];
         };
+        # homeConfigurations = {
+        #   murmeldin = hmLib.homeManagerConfiguration {
+        #     pkgs = pkgs;
+        #     modules = [
+        #       ./home.nix
+        #     ];
+        #   };
+        # };
+
       };
     };
 }

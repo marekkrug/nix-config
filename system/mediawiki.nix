@@ -4,8 +4,8 @@
 
 {
   services.mediawiki = {
-    enable = true;
-    # Pr3000ior to NixOS 24.05, there is a admin name bug that prevents using spaces in the mediawiki name https://github.com/NixOS/nixpkgs/issues/298902
+    enable = false;
+    # Prior to NixOS 24.05, there is a admin name bug that prevents using spaces in the mediawiki name https://github.com/NixOS/nixpkgs/issues/298902
     name = "Test_MediaWiki";
     httpd.virtualHost = {
       hostName = "localhost";
@@ -22,12 +22,6 @@
     extensions = {
       # some extensions are included and can enabled by passing null
       VisualEditor = null;
-
-      # https://www.mediawiki.org/wiki/Extension:TemplateStyles
-      #TemplateStyles = pkgs.fetchzip {
-      #  url = "https://extdist.wmflabs.org/dist/extensions/TemplateStyles-REL1_35-8dba6c0.tar.gz";
-      #  hash = "sha256-Pnp6MXqZd6zjhzNC2qYX6sP33ai5n05+1ucXEbw3XEE=";
-      #};
     };
 };
 
@@ -39,15 +33,6 @@ services.mediawiki.httpd.virtualHost.listen = [
     }
   ];
 
-# services.mediawiki.poolConfig = [
-#   {
-#     pm = "dynamic";
-#     "pm.max_children" = 8;
-#     "pm.max_requests" = 500;
-#     "pm.max_spare_servers" = 4;
-#     "pm.min_spare_servers" = 1;
-#     "pm.start_servers" = 2;
-#   }
-# ];
+
 }
 

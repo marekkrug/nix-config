@@ -8,6 +8,7 @@
     pandoc
     yt-dlp
     tokei
+    ncpu # folder size analyzer
   ];
 
   programs = {

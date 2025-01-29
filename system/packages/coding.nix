@@ -19,5 +19,6 @@
     dotnet-sdk_8
     python311
     poetry
+    fontconfig
   ];
 }

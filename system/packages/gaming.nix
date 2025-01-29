@@ -5,6 +5,7 @@
     prismlauncher # for minecraft
     mindustry
     moonlight-qt
+    xclicker
   ];
 
   programs = {

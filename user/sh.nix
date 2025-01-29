@@ -13,7 +13,7 @@
         my-update = "cd ~/.dotfiles/ && sudo nixos-rebuild switch --flake .";
         my-home-update = "cd ~/.dotfiles/ && home-manager switch --flake .";
         cd-dotfiles = "cd ~/.dotfiles/";
-        my-upgrade = "cd ~/.dotfiles/ && git pull && git push && sudo nix flake update && sudo nixos-rebuild switch --upgrade --flake .";
+        my-upgrade = "cd ~/.dotfiles/ && git pull && git push && sudo nix flake update && sudo nixos-rebuild switch --upgrade --flake . --log-format internal-json -v |& nom --json";
         my-boot-upgrade = "cd ~/.dotfiles/ && git pull && git push && sudo nix flake update && sudo nixos-rebuild boot --upgrade --flake .";
         my-flake-upgrade = "sudo nix flake update";
         my-pull = "git -C ~/Repos/nixos-configuration pull --rebase";
